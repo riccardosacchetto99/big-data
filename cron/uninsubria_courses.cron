@@ -1,2 +1,2 @@
-# Every 30 minutes: fetch Moodle enrolled courses JSON
-*/30 * * * * /Users/riccardosacchetto/Desktop/BIG\ DATA/scripts/fetch_uninsubria_courses.sh >> /Users/riccardosacchetto/Desktop/BIG\ DATA/data/uninsubria_courses_cron.log 2>&1
+# Daily at 07:00: sync courses -> notebooks -> folder files -> NotebookLM sources
+0 7 * * * /Users/riccardosacchetto/Desktop/BIG\ DATA/scripts/sync_uninsubria_notebooks.sh
