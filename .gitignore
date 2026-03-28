@@ -3,3 +3,5 @@
 _extracted/
 __pycache__/
 *.pyc
+data/*.json
+data/*.log
