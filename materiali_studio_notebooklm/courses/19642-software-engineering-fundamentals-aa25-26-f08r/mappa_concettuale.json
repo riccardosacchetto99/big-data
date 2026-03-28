@@ -1,0 +1,206 @@
+{
+  "mind_map": {
+    "name": "Software Engineering Fundamentals",
+    "children": [
+      {
+        "name": "Software Life Cycle",
+        "children": [
+          {
+            "name": "Waterfall Model",
+            "children": [
+              {
+                "name": "Analysis and Requirements"
+              },
+              {
+                "name": "Design"
+              },
+              {
+                "name": "Implementation"
+              },
+              {
+                "name": "Validation and Verification"
+              },
+              {
+                "name": "Maintenance"
+              }
+            ]
+          },
+          {
+            "name": "Evolutionary Model"
+          },
+          {
+            "name": "Spiral Model"
+          },
+          {
+            "name": "Transformation-based Model"
+          }
+        ]
+      },
+      {
+        "name": "Validation and Verification",
+        "children": [
+          {
+            "name": "Static Analysis",
+            "children": [
+              {
+                "name": "Petri Nets"
+              },
+              {
+                "name": "Data Flow Diagrams"
+              },
+              {
+                "name": "Logic Unification"
+              }
+            ]
+          },
+          {
+            "name": "Dynamic Analysis (Testing)",
+            "children": [
+              {
+                "name": "Functional Testing (Black Box)"
+              },
+              {
+                "name": "Structural Testing (White Box)"
+              },
+              {
+                "name": "Symbolic Execution"
+              },
+              {
+                "name": "Regression Testing"
+              }
+            ]
+          },
+          {
+            "name": "Testing Levels",
+            "children": [
+              {
+                "name": "Testing in the small (Unit)"
+              },
+              {
+                "name": "Integration Testing"
+              },
+              {
+                "name": "Testing in the large (System)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Programming Languages",
+        "children": [
+          {
+            "name": "Parameter Passing",
+            "children": [
+              {
+                "name": "By Reference"
+              },
+              {
+                "name": "By Copy-in (Value)"
+              },
+              {
+                "name": "By Copy-in Copy-out"
+              }
+            ]
+          },
+          {
+            "name": "Memory Management",
+            "children": [
+              {
+                "name": "Static allocation"
+              },
+              {
+                "name": "Stack-based (Activation Records)"
+              },
+              {
+                "name": "Heap-based (Dynamic)"
+              }
+            ]
+          },
+          {
+            "name": "Object Oriented Features",
+            "children": [
+              {
+                "name": "Inheritance"
+              },
+              {
+                "name": "Polymorphism"
+              },
+              {
+                "name": "Dynamic Binding"
+              },
+              {
+                "name": "Covariance/Contravariance/Invariance"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Software Cost Estimation",
+        "children": [
+          {
+            "name": "COCOMO II",
+            "children": [
+              {
+                "name": "Early Design Model"
+              },
+              {
+                "name": "Post-Architecture Model"
+              },
+              {
+                "name": "Scale Factors (PREC, FLEX, RESL, TEAM, PMAT)"
+              },
+              {
+                "name": "Cost Drivers"
+              },
+              {
+                "name": "Sizing (SLOC, Function Points)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Software Qualities",
+        "children": [
+          {
+            "name": "External Qualities",
+            "children": [
+              {
+                "name": "Correctness"
+              },
+              {
+                "name": "Reliability"
+              },
+              {
+                "name": "Robustness"
+              },
+              {
+                "name": "Efficiency"
+              }
+            ]
+          },
+          {
+            "name": "Internal Qualities",
+            "children": [
+              {
+                "name": "Verifiability"
+              },
+              {
+                "name": "Maintainability"
+              },
+              {
+                "name": "Reusability"
+              },
+              {
+                "name": "Portability"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "note_id": "948b5500-712f-4bb5-a085-0542f41d2cca"
+}
