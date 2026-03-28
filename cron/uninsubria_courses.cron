@@ -1,0 +1,2 @@
+# Every 30 minutes: fetch Moodle enrolled courses JSON
+*/30 * * * * /Users/riccardosacchetto/Desktop/BIG\ DATA/scripts/fetch_uninsubria_courses.sh >> /Users/riccardosacchetto/Desktop/BIG\ DATA/data/uninsubria_courses_cron.log 2>&1
