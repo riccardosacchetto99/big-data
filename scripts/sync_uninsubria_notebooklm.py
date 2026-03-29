@@ -340,6 +340,8 @@ def generate_chapter_report(notebook_id: str, course_name: str, chapter_title: s
             "--language",
             "it",
             "--wait",
+            "--retry",
+            "8",
         ]
     )
 
@@ -368,6 +370,8 @@ def trigger_audio_overview(notebook_id: str, course_name: str) -> bool:
             "--language",
             "it",
             "--no-wait",
+            "--retry",
+            "5",
         ]
     )
     if not ok:
@@ -396,10 +400,13 @@ def regenerate_course_materials(course: dict, notebook_id: str, state: dict) -> 
 
     for idx, (filename, chapter_title, guidance) in enumerate(CHAPTER_SPECS, start=1):
         chapter_path = course_dir / filename
-        ok = generate_chapter_report(notebook_id, course_name, chapter_title, guidance, chapter_path)
-        if ok:
-            log(f"    + Capitolo {idx} aggiornato: {filename}")
-        index_lines.append(f"- [Capitolo {idx}: {chapter_title}]({filename})")
+        try:
+            ok = generate_chapter_report(notebook_id, course_name, chapter_title, guidance, chapter_path)
+            if ok:
+                log(f"    + Capitolo {idx} aggiornato: {filename}")
+                index_lines.append(f"- [Capitolo {idx}: {chapter_title}]({filename})")
+        except Exception as e:
+            log(f"    - Capitolo {idx} non generato: {e}")
 
     mind_map_path = course_dir / "mappa_concettuale.json"
     try:
@@ -467,7 +474,11 @@ def main() -> int:
                 continue
             course_obj = {"id": int(cid), "fullname": fullname}
             log(f"[bootstrap] Rigenero corso {cid} - {fullname}")
-            regenerate_course_materials(course_obj, nb_id, state)
+            try:
+                regenerate_course_materials(course_obj, nb_id, state)
+            except Exception as e:
+                log(f"[bootstrap] Corso {cid} fallito: {e}")
+                continue
             write_state(state)
             regenerated += 1
         log(f"Bootstrap completato. Corsi rigenerati: {regenerated}")
