@@ -161,23 +161,46 @@ def api_url(info: str, sesskey: str) -> str:
 
 
 def fetch_courses(sesskey: str) -> list[dict]:
+    """Fetch all enrolled courses handling Moodle pagination (nextoffset)."""
     url = api_url("core_course_get_enrolled_courses_by_timeline_classification", sesskey)
-    payload = json.dumps(
-        [
-            {
-                "index": 0,
-                "methodname": "core_course_get_enrolled_courses_by_timeline_classification",
-                "args": {"offset": 0, "limit": 0, "classification": "all", "sort": "fullname"},
-            }
-        ]
-    )
-    raw = http_request(url, method="POST", body=payload)
-    data = json.loads(raw)
-    if not isinstance(data, list) or not data:
-        raise RuntimeError("Risposta corsi non valida.")
-    if data[0].get("error"):
-        raise RuntimeError(f"Errore API corsi: {data[0]}")
-    return data[0]["data"]["courses"]
+    offset = 0
+    limit = 50
+    all_courses: list[dict] = []
+    seen_ids: set[int] = set()
+
+    while True:
+        payload = json.dumps(
+            [
+                {
+                    "index": 0,
+                    "methodname": "core_course_get_enrolled_courses_by_timeline_classification",
+                    "args": {"offset": offset, "limit": limit, "classification": "all", "sort": "fullname"},
+                }
+            ]
+        )
+        raw = http_request(url, method="POST", body=payload)
+        data = json.loads(raw)
+        if not isinstance(data, list) or not data:
+            raise RuntimeError("Risposta corsi non valida.")
+        if data[0].get("error"):
+            raise RuntimeError(f"Errore API corsi: {data[0]}")
+
+        page = data[0].get("data", {})
+        courses = page.get("courses", []) or []
+        for course in courses:
+            cid = int(course.get("id", 0))
+            if cid and cid not in seen_ids:
+                seen_ids.add(cid)
+                all_courses.append(course)
+
+        nextoffset = page.get("nextoffset")
+        if nextoffset is None:
+            break
+        if isinstance(nextoffset, int) and nextoffset <= offset:
+            break
+        offset = int(nextoffset)
+
+    return all_courses
 
 
 def fetch_course_state(sesskey: str, course_id: int) -> dict:
