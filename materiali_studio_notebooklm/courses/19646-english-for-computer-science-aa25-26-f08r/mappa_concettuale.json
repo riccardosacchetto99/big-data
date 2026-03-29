@@ -1,0 +1,153 @@
+{
+  "mind_map": {
+    "name": "English for Computer Science",
+    "children": [
+      {
+        "name": "Robotica e AI",
+        "children": [
+          {
+            "name": "Robodog (RS-01)",
+            "children": [
+              {
+                "name": "Azienda: RoboScience (UK)"
+              },
+              {
+                "name": "Caratteristiche: Labrabor size, 12kg, Kevlar"
+              },
+              {
+                "name": "Funzioni: Ostacoli, comandi orali, Internet"
+              }
+            ]
+          },
+          {
+            "name": "Robot Domestici",
+            "children": [
+              {
+                "name": "Roomba (iRobot): aspirapolvere"
+              },
+              {
+                "name": "Automower (Husqvarna): tosaerba"
+              },
+              {
+                "name": "Rovio (WowWee): webcam mobile"
+              }
+            ]
+          },
+          {
+            "name": "Intelligenza Artificiale",
+            "children": [
+              {
+                "name": "AI nell'Arte: algoritmi GAN, Portrait of Edmond Belamy"
+              },
+              {
+                "name": "LLMs (MIT): instance-adaptive scaling per efficienza"
+              },
+              {
+                "name": "Riconoscimento Facciale: software, caricaturo-effetti"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Sicurezza Informatica",
+        "children": [
+          {
+            "name": "Cyber-attacchi",
+            "children": [
+              {
+                "name": "WannaCry: ransomware, 150 paesi colpiti"
+              },
+              {
+                "name": "Motivazioni hacker: denaro, ideologia, sfida"
+              },
+              {
+                "name": "Protezione: MFA, password forti, istruzione"
+              }
+            ]
+          },
+          {
+            "name": "Furto d'Identità",
+            "children": [
+              {
+                "name": "Rischi: esposizione dati personali"
+              },
+              {
+                "name": "Prevenzione: monitoraggio account"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Tecnologia e Salute",
+        "children": [
+          {
+            "name": "Rischi Fisici",
+            "children": [
+              {
+                "name": "Danni udito: volume MP3 elevato"
+              },
+              {
+                "name": "Radiazioni (EMR): electropollution, danni cellulari"
+              }
+            ]
+          },
+          {
+            "name": "Rischi Mentali",
+            "children": [
+              {
+                "name": "Dipendenza da smartphone"
+              },
+              {
+                "name": "Declino creatività linguistica"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Scrittura Accademica",
+        "children": [
+          {
+            "name": "Abstract",
+            "children": [
+              {
+                "name": "Struttura (IMReD): Intro, Metodi, Risultati, Discussione"
+              },
+              {
+                "name": "Parametri: 150-300 parole, Times New Roman 12"
+              }
+            ]
+          },
+          {
+            "name": "Grafici e Trend",
+            "children": [
+              {
+                "name": "Tipi: Scatter plot, Line graph, Bar chart"
+              },
+              {
+                "name": "Vocabolario: surge, fluctuate, plateau, peak"
+              }
+            ]
+          },
+          {
+            "name": "Grammatica e Stile",
+            "children": [
+              {
+                "name": "Forma Passiva: agente omissione"
+              },
+              {
+                "name": "Modali: gradi di certezza (might, must)"
+              },
+              {
+                "name": "Flusso: da informazioni note a nuove"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "note_id": "a1147920-16ce-4646-90dd-4e0b96e7314c"
+}
