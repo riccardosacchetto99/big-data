@@ -108,6 +108,10 @@ def slugify(value: str) -> str:
     return value or "corso"
 
 
+def course_dir_for(course_id: str, course_name: str) -> Path:
+    return COURSE_DOCS_ROOT / f"{course_id}-{slugify(course_name)}"
+
+
 def should_skip_course(course: dict) -> bool:
     name = (course.get("fullname") or "").lower()
     return any(k in name for k in SKIP_COURSE_KEYWORDS)
@@ -374,8 +378,7 @@ def trigger_audio_overview(notebook_id: str, course_name: str) -> bool:
 def regenerate_course_materials(course: dict, notebook_id: str, state: dict) -> None:
     course_id = str(course["id"])
     course_name = course.get("fullname") or f"Course {course_id}"
-    course_slug = slugify(course_name)
-    course_dir = COURSE_DOCS_ROOT / f"{course_id}-{course_slug}"
+    course_dir = course_dir_for(course_id, course_name)
     course_dir.mkdir(parents=True, exist_ok=True)
     use_notebook_context(notebook_id)
 
@@ -426,6 +429,11 @@ def main() -> int:
         default="",
         help="Rigenera subito i materiali per un corso gia mappato (senza fare sync file)",
     )
+    parser.add_argument(
+        "--bootstrap-missing-materials",
+        action="store_true",
+        help="Rigenera i materiali per tutti i corsi che non hanno ancora index.md locale",
+    )
     args = parser.parse_args()
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -443,6 +451,26 @@ def main() -> int:
         regenerate_course_materials(course_obj, course_state["notebook_id"], state)
         write_state(state)
         log(f"Rigenerazione completata per corso {cid}")
+        return 0
+
+    if args.bootstrap_missing_materials:
+        regenerated = 0
+        for cid, course_state in sorted(state.get("courses", {}).items(), key=lambda x: x[0]):
+            fullname = course_state.get("fullname") or f"Course {cid}"
+            if should_skip_course({"fullname": fullname}):
+                continue
+            index_path = course_dir_for(str(cid), fullname) / "index.md"
+            if index_path.exists():
+                continue
+            nb_id = course_state.get("notebook_id")
+            if not nb_id:
+                continue
+            course_obj = {"id": int(cid), "fullname": fullname}
+            log(f"[bootstrap] Rigenero corso {cid} - {fullname}")
+            regenerate_course_materials(course_obj, nb_id, state)
+            write_state(state)
+            regenerated += 1
+        log(f"Bootstrap completato. Corsi rigenerati: {regenerated}")
         return 0
 
     log("Recupero sesskey...")
@@ -481,6 +509,8 @@ def main() -> int:
 
         state.setdefault("files", {}).setdefault(course_id, {})
         state.setdefault("ignored", {}).setdefault(course_id, {})
+        index_path = course_dir_for(course_id, course.get("fullname") or f"Course {course_id}") / "index.md"
+        missing_materials = not index_path.exists()
 
         try:
             course_state = fetch_course_state(sesskey, int(course["id"]))
@@ -583,7 +613,7 @@ def main() -> int:
 
             write_state(state)
 
-        if new_uploads_for_course > 0:
+        if new_uploads_for_course > 0 or missing_materials:
             regenerate_course_materials(course, nb_id, state)
             regenerated_courses += 1
         else:

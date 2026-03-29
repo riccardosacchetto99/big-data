@@ -1,0 +1,207 @@
+{
+  "mind_map": {
+    "name": "Database NoSQL e Gestione Dati",
+    "children": [
+      {
+        "name": "Concetto di Aggregate",
+        "children": [
+          {
+            "name": "Definizione",
+            "children": [
+              {
+                "name": "Unità di interazione dati"
+              }
+            ]
+          },
+          {
+            "name": "Caratteristiche",
+            "children": [
+              {
+                "name": "Confine operazioni ACID"
+              },
+              {
+                "name": "Gestione storage su cluster"
+              }
+            ]
+          },
+          {
+            "name": "Limitazioni",
+            "children": [
+              {
+                "name": "Atomicità singola"
+              },
+              {
+                "name": "Aggiornamenti multipli a carico del programmatore"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Graph Databases",
+        "children": [
+          {
+            "name": "Obiettivo",
+            "children": [
+              {
+                "name": "Modellare relazioni complesse"
+              },
+              {
+                "name": "Persistere connessioni"
+              }
+            ]
+          },
+          {
+            "name": "Componenti",
+            "children": [
+              {
+                "name": "Nodi (oggetti)"
+              },
+              {
+                "name": "Archi (relazioni tipizzate)"
+              }
+            ]
+          },
+          {
+            "name": "Esempi e Tool",
+            "children": [
+              {
+                "name": "Neo4j"
+              },
+              {
+                "name": "OrientDB"
+              },
+              {
+                "name": "NebulaGraph"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Redis (Remote Dictionary Server)",
+        "children": [
+          {
+            "name": "Modello Dati",
+            "children": [
+              {
+                "name": "Chiavi ASCII"
+              },
+              {
+                "name": "Stringhe"
+              },
+              {
+                "name": "Hash"
+              },
+              {
+                "name": "Liste"
+              },
+              {
+                "name": "Set"
+              },
+              {
+                "name": "Sorted Sets"
+              }
+            ]
+          },
+          {
+            "name": "Persistenza",
+            "children": [
+              {
+                "name": "RDB (Snapshot periodici)"
+              },
+              {
+                "name": "AOF (Log di ogni scrittura)"
+              }
+            ]
+          },
+          {
+            "name": "Comandi TTL",
+            "children": [
+              {
+                "name": "EXPIRE"
+              },
+              {
+                "name": "TTL"
+              },
+              {
+                "name": "PERSIST"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Tecnologie Facebook",
+        "children": [
+          {
+            "name": "Hadoop",
+            "children": [
+              {
+                "name": "HDFS (Storage massivo)"
+              },
+              {
+                "name": "MapReduce (Calcolo)"
+              }
+            ]
+          },
+          {
+            "name": "HBase",
+            "children": [
+              {
+                "name": "Database column-family"
+              }
+            ]
+          },
+          {
+            "name": "Memcached",
+            "children": [
+              {
+                "name": "Cache key-value distribuita"
+              }
+            ]
+          },
+          {
+            "name": "Giraph",
+            "children": [
+              {
+                "name": "Analisi dei grafi utenti"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Strategie di Modellazione",
+        "children": [
+          {
+            "name": "Relazionale vs NoSQL",
+            "children": [
+              {
+                "name": "Join costose vs Traversal economici"
+              },
+              {
+                "name": "Schema rigido vs Schemaless"
+              }
+            ]
+          },
+          {
+            "name": "Key-Value Design",
+            "children": [
+              {
+                "name": "Indici inversi"
+              },
+              {
+                "name": "Aggregati opachi"
+              },
+              {
+                "name": "Aggregati atomici (JSON in value)"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "note_id": "720ec27f-a5d6-47db-b789-022d5ae5203d"
+}
